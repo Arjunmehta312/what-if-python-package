@@ -30,8 +30,8 @@ pip install whatif-analyzer
 
 ### From Source
 ```bash
-git clone https://github.com/yourusername/whatif-analyzer.git
-cd whatif-analyzer
+git clone https://github.com/Arjunmehta312/what-if-python-package.git
+cd what-if-python-package
 pip install -e .
 ```
 
@@ -175,67 +175,3 @@ Contributions are welcome! Please feel free to submit a Pull Request. For major 
 3. Commit your changes (`git commit -m 'Add some amazing feature'`)
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
-
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 📄 Citation
-
-If you use WhatIF Analyzer in your research, please cite:
-
-```bibtex
-@software{whatif_analyzer,
-  author = {Your Name},
-  title = {WhatIF Analyzer},
-  year = {2024},
-  url = {https://github.com/yourusername/whatif-analyzer}
-}
-```
-
-## 🙏 Acknowledgments
-
-- Thanks to all contributors who have helped shape this project
-- Inspired by various testing and analysis tools in the Python ecosystem
-
-## 📞 Support
-
-If you encounter any issues or have questions, please:
-1. Check the [documentation](https://whatif-analyzer.readthedocs.io/)
-2. Search [existing issues](https://github.com/yourusername/whatif-analyzer/issues)
-3. Create a new issue if needed
-
-## 🔄 Changelog
-
-See [CHANGELOG.md](CHANGELOG.md) for a list of changes between versions.
-
-## 📦 Package Structure
-
-```
-whatif-analyzer/
-│
-├── whatif_analyzer/
-│   ├── __init__.py
-│   ├── analyzer.py
-│   ├── edge_cases.py
-│   ├── type_inference.py
-│   ├── report.py
-│   └── cli.py
-│
-├── examples/
-│   ├── basic_usage.py
-│   └── advanced_usage.py
-│
-├── tests/
-│   ├── test_analyzer.py
-│   ├── test_cli.py
-│   ├── test_edge_cases.py
-│   ├── test_report.py
-│   └── test_type_inference.py
-│
-├── pyproject.toml
-├── setup.py
-├── README.md
-├── LICENSE
-└── .gitignore
-``` 
