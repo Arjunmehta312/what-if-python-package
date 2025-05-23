@@ -2,7 +2,7 @@
 
 A powerful Python package for analyzing functions by automatically generating and running "what-if" scenarios, with a focus on edge cases and robustness testing.
 
-## Features
+## 🌟 Features
 
 - 🔍 **Static Analysis**: Automatically infers parameter types and generates edge cases
 - 🎯 **Edge Case Testing**: Tests with None, empty values, extreme numbers, and more
@@ -11,16 +11,38 @@ A powerful Python package for analyzing functions by automatically generating an
 - 🛠️ **Multiple Interfaces**: Use as a decorator, CLI tool, or Python API
 - 📝 **Comprehensive Documentation**: Clear examples and usage instructions
 
-## Installation
+## 📋 Requirements
 
+- Python 3.8 or higher
+- Dependencies:
+  - typing-extensions >= 4.0.0
+  - inspect2 >= 0.1.0
+  - rich >= 10.0.0
+  - click >= 8.0.0
+  - pytest >= 7.0.0 (for development)
+
+## 🚀 Installation
+
+### From PyPI
 ```bash
 pip install whatif-analyzer
 ```
 
-## Quick Start
+### From Source
+```bash
+git clone https://github.com/yourusername/whatif-analyzer.git
+cd whatif-analyzer
+pip install -e .
+```
+
+### Development Installation
+```bash
+pip install -e .[dev]
+```
+
+## 📖 Quick Start
 
 ### Using the Decorator
-
 ```python
 from whatif_analyzer import analyze
 
@@ -33,7 +55,6 @@ result = divide(10, 2)
 ```
 
 ### Using the CLI
-
 ```bash
 # Analyze a Python file
 whatif analyze path/to/your/file.py
@@ -43,7 +64,6 @@ whatif analyze path/to/your/file.py:function_name
 ```
 
 ### Using the API
-
 ```python
 from whatif_analyzer import WhatIfAnalyzer
 
@@ -55,7 +75,7 @@ report = analyzer.analyze_function(my_function)
 print(report)
 ```
 
-## Example Report
+## 📊 Example Report
 
 ```python
 from whatif_analyzer import analyze
@@ -97,10 +117,9 @@ Recommendations:
 3. Consider adding input validation for threshold
 ```
 
-## Advanced Usage
+## 🔧 Advanced Usage
 
 ### Custom Edge Cases
-
 ```python
 from whatif_analyzer import WhatIfAnalyzer, EdgeCase
 
@@ -120,7 +139,6 @@ report = analyzer.analyze_function(
 ```
 
 ### Configuration Options
-
 ```python
 from whatif_analyzer import WhatIfAnalyzer
 
@@ -132,15 +150,37 @@ analyzer = WhatIfAnalyzer(
 )
 ```
 
-## Contributing
+## 🧪 Testing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Run the test suite:
+```bash
+pytest
+```
 
-## License
+Run with coverage:
+```bash
+pytest --cov=whatif_analyzer
+```
+
+## 📚 Documentation
+
+For detailed documentation, visit our [documentation site](https://whatif-analyzer.readthedocs.io/).
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📝 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Citation
+## 📄 Citation
 
 If you use WhatIF Analyzer in your research, please cite:
 
@@ -151,4 +191,51 @@ If you use WhatIF Analyzer in your research, please cite:
   year = {2024},
   url = {https://github.com/yourusername/whatif-analyzer}
 }
+```
+
+## 🙏 Acknowledgments
+
+- Thanks to all contributors who have helped shape this project
+- Inspired by various testing and analysis tools in the Python ecosystem
+
+## 📞 Support
+
+If you encounter any issues or have questions, please:
+1. Check the [documentation](https://whatif-analyzer.readthedocs.io/)
+2. Search [existing issues](https://github.com/yourusername/whatif-analyzer/issues)
+3. Create a new issue if needed
+
+## 🔄 Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for a list of changes between versions.
+
+## 📦 Package Structure
+
+```
+whatif-analyzer/
+│
+├── whatif_analyzer/
+│   ├── __init__.py
+│   ├── analyzer.py
+│   ├── edge_cases.py
+│   ├── type_inference.py
+│   ├── report.py
+│   └── cli.py
+│
+├── examples/
+│   ├── basic_usage.py
+│   └── advanced_usage.py
+│
+├── tests/
+│   ├── test_analyzer.py
+│   ├── test_cli.py
+│   ├── test_edge_cases.py
+│   ├── test_report.py
+│   └── test_type_inference.py
+│
+├── pyproject.toml
+├── setup.py
+├── README.md
+├── LICENSE
+└── .gitignore
 ``` 
