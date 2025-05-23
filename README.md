@@ -146,63 +146,6 @@ For detailed documentation, visit our [documentation site](https://whatif-analyz
 4. Run tests
 5. Submit a pull request
 
-## License 📄
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Citation 📝
-
-If you use this package in your research, please cite:
-
-```
-@software{whatif_analyzer,
-  author = {Arjun Mehta},
-  title = {WhatIF Analyzer},
-  year = {2024},
-  url = {https://github.com/Arjunmehta312/what-if-python-package}
-}
-```
-
-## Acknowledgments 🙏
-
-- Thanks to all contributors
-- Inspired by various testing and analysis tools
-
-## Support 💬
-
-- GitHub Issues: [Report bugs or request features](https://github.com/Arjunmehta312/what-if-python-package/issues)
-- Documentation: [Read the docs](https://whatif-analyzer.readthedocs.io/)
-
-## Changelog 📋
-
-See [CHANGELOG.md](CHANGELOG.md) for a list of changes.
-
-## Package Structure 📁
-
-```
-whatif-analyzer/
-├── src/
-│   └── whatif_analyzer/
-│       ├── __init__.py
-│       ├── analyzer.py
-│       ├── cli.py
-│       ├── edge_cases.py
-│       ├── report.py
-│       └── type_inference.py
-├── tests/
-│   ├── __init__.py
-│   ├── test_analyzer.py
-│   ├── test_cli.py
-│   ├── test_edge_cases.py
-│   ├── test_report.py
-│   └── test_type_inference.py
-├── pyproject.toml
-├── setup.py
-├── README.md
-├── LICENSE
-└── CHANGELOG.md
-```
-
 ## PyPI Package 📦
 
 This package is available on PyPI: [whatif-analyzer](https://pypi.org/project/whatif-analyzer/)
