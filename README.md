@@ -1,177 +1,208 @@
-# WhatIF Analyzer
+# WhatIF Analyzer 🧪
 
-A powerful Python package for analyzing functions by automatically generating and running "what-if" scenarios, with a focus on edge cases and robustness testing.
+A Python package for analyzing function behavior and edge cases through static analysis and automated testing.
 
-## 🌟 Features
+## Features ✨
 
-- 🔍 **Static Analysis**: Automatically infers parameter types and generates edge cases
-- 🎯 **Edge Case Testing**: Tests with None, empty values, extreme numbers, and more
-- 🧪 **Lightweight Fuzzing**: Optional fuzzing for additional test cases
-- 📊 **Detailed Reports**: Human-readable summaries of test results
-- 🛠️ **Multiple Interfaces**: Use as a decorator, CLI tool, or Python API
-- 📝 **Comprehensive Documentation**: Clear examples and usage instructions
+- Static analysis of function parameters and return types
+- Automated edge case testing
+- Detailed analysis reports
+- Support for complex type hints
+- Command-line interface
+- Rich console output
 
-## 📋 Requirements
+## Requirements 📋
 
 - Python 3.8 or higher
 - Dependencies:
-  - typing-extensions >= 4.0.0
-  - inspect2 >= 0.1.0
-  - rich >= 10.0.0
-  - click >= 8.0.0
-  - pytest >= 7.0.0 (for development)
+  - typing-extensions
+  - inspect2
+  - rich
+  - click
+  - pytest (for development)
 
-## 🚀 Installation
+## Installation 🚀
 
 ### From PyPI
+
 ```bash
 pip install whatif-analyzer
 ```
 
 ### From Source
+
 ```bash
 git clone https://github.com/Arjunmehta312/what-if-python-package.git
 cd what-if-python-package
 pip install -e .
 ```
 
-### Development Installation
+For development installation with all dependencies:
+
 ```bash
-pip install -e .[dev]
+pip install -e ".[dev]"
 ```
 
-## 📖 Quick Start
+## Quick Start 🏃‍♂️
 
 ### Using the Decorator
+
 ```python
 from whatif_analyzer import analyze
 
-@analyze
-def divide(a: float, b: float) -> float:
-    return a / b
-
-# The function will be automatically analyzed when called
-result = divide(10, 2)
+@analyze()
+def calculate_discount(price: float, discount_percent: float) -> float:
+    """Calculate the final price after applying a discount."""
+    if discount_percent < 0 or discount_percent > 100:
+        raise ValueError("Discount must be between 0 and 100")
+    return price * (1 - discount_percent / 100)
 ```
 
 ### Using the CLI
-```bash
-# Analyze a Python file
-whatif analyze path/to/your/file.py
 
-# Analyze a specific function
-whatif analyze path/to/your/file.py:function_name
+```bash
+whatif analyze path/to/your/module.py
 ```
 
 ### Using the API
+
 ```python
-from whatif_analyzer import WhatIfAnalyzer
+from whatif_analyzer import analyze_function
 
-def my_function(x: int, y: str) -> bool:
-    return len(y) > x
+def my_function(x: int, y: float) -> str:
+    return str(x + y)
 
-analyzer = WhatIfAnalyzer()
-report = analyzer.analyze_function(my_function)
+report = analyze_function(my_function)
 print(report)
 ```
 
-## 📊 Example Report
+## Example Report 📊
 
-```python
-from whatif_analyzer import analyze
-
-@analyze
-def process_data(data: list, threshold: int) -> float:
-    if not data:
-        return 0.0
-    return sum(x for x in data if x > threshold) / len(data)
-
-# The analysis will run automatically
-result = process_data([1, 2, 3, 4, 5], 2)
 ```
-
-Sample report output:
-```
-WhatIF Analysis Report
-=====================
-
-Function: process_data
+Function: calculate_discount
 Parameters:
-  - data: list
-  - threshold: int
+  - price: float
+  - discount_percent: float
+Return Type: float
 
-Edge Cases Tested:
-✓ Empty list
-✓ None values
-✓ Negative threshold
-✓ Large threshold
-✓ Mixed data types
-
-Exceptions Found:
-- TypeError: When data contains non-numeric values
-- ZeroDivisionError: When data is empty and threshold is 0
-
-Recommendations:
-1. Add type checking for list elements
-2. Handle empty list case explicitly
-3. Consider adding input validation for threshold
+Test Results:
+✓ Test 1: price=0.0, discount_percent=0.0 → 0.0
+✓ Test 2: price=100.0, discount_percent=50.0 → 50.0
+✗ Test 3: price=-1.0, discount_percent=0.0 → ValueError
+✓ Test 4: price=0.0, discount_percent=100.0 → 0.0
 ```
 
-## 🔧 Advanced Usage
+## Advanced Usage 🛠️
 
-### Custom Edge Cases
+### Defining Custom Edge Cases
+
 ```python
-from whatif_analyzer import WhatIfAnalyzer, EdgeCase
+from whatif_analyzer import analyze, EdgeCase
 
-analyzer = WhatIfAnalyzer()
-
-# Define custom edge cases
-custom_cases = [
-    EdgeCase("special_value", lambda x: x == 42),
-    EdgeCase("negative_list", lambda x: all(i < 0 for i in x))
-]
-
-# Analyze with custom cases
-report = analyzer.analyze_function(
-    my_function,
-    edge_cases=custom_cases
-)
+@analyze(edge_cases=[
+    EdgeCase("price", [0, 100, 1000]),
+    EdgeCase("discount_percent", [0, 50, 100])
+])
+def calculate_discount(price: float, discount_percent: float) -> float:
+    return price * (1 - discount_percent / 100)
 ```
 
 ### Configuration Options
-```python
-from whatif_analyzer import WhatIfAnalyzer
 
-analyzer = WhatIfAnalyzer(
-    enable_fuzzing=True,
-    max_fuzz_cases=100,
-    timeout_seconds=5,
-    verbose=True
+```python
+@analyze(
+    max_depth=3,
+    include_none=True,
+    timeout=5.0
 )
+def complex_function(x: int, y: float) -> str:
+    # Your function here
+    pass
 ```
 
-## 🧪 Testing
+## Testing 🧪
 
 Run the test suite:
+
 ```bash
 pytest
 ```
 
 Run with coverage:
+
 ```bash
 pytest --cov=whatif_analyzer
 ```
 
-## 📚 Documentation
+## Documentation 📚
 
 For detailed documentation, visit our [documentation site](https://whatif-analyzer.readthedocs.io/).
 
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
+## Contributing 🤝
 
 1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+2. Create a feature branch
+3. Make your changes
+4. Run tests
+5. Submit a pull request
+
+## License 📄
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Citation 📝
+
+If you use this package in your research, please cite:
+
+```
+@software{whatif_analyzer,
+  author = {Arjun Mehta},
+  title = {WhatIF Analyzer},
+  year = {2024},
+  url = {https://github.com/Arjunmehta312/what-if-python-package}
+}
+```
+
+## Acknowledgments 🙏
+
+- Thanks to all contributors
+- Inspired by various testing and analysis tools
+
+## Support 💬
+
+- GitHub Issues: [Report bugs or request features](https://github.com/Arjunmehta312/what-if-python-package/issues)
+- Documentation: [Read the docs](https://whatif-analyzer.readthedocs.io/)
+
+## Changelog 📋
+
+See [CHANGELOG.md](CHANGELOG.md) for a list of changes.
+
+## Package Structure 📁
+
+```
+whatif-analyzer/
+├── src/
+│   └── whatif_analyzer/
+│       ├── __init__.py
+│       ├── analyzer.py
+│       ├── cli.py
+│       ├── edge_cases.py
+│       ├── report.py
+│       └── type_inference.py
+├── tests/
+│   ├── __init__.py
+│   ├── test_analyzer.py
+│   ├── test_cli.py
+│   ├── test_edge_cases.py
+│   ├── test_report.py
+│   └── test_type_inference.py
+├── pyproject.toml
+├── setup.py
+├── README.md
+├── LICENSE
+└── CHANGELOG.md
+```
+
+## PyPI Package 📦
+
+This package is available on PyPI: [whatif-analyzer](https://pypi.org/project/whatif-analyzer/)
