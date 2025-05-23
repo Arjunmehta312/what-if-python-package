@@ -134,10 +134,6 @@ Run with coverage:
 pytest --cov=whatif_analyzer
 ```
 
-## Documentation 📚
-
-For detailed documentation, visit our [documentation site](https://whatif-analyzer.readthedocs.io/).
-
 ## Contributing 🤝
 
 1. Fork the repository
